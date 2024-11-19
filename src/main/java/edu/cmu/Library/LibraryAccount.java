@@ -10,8 +10,7 @@ public class LibraryAccount {
      * e.g., "12345:John Doe"
      *
      * @param userId the ID of the user whose books are to be retrieved
-     * @return an Optional containing an array of Book objects if the user has books, 
-     *         or an empty Optional if the user has no books
+     * @return an array of Book objects the user has checked out
      */
     public Book[] getBooks(String userId) {
         String[] parts = userId.split(":");
