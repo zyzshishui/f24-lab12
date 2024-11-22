@@ -2,23 +2,21 @@ package edu.cmu.DirManager;
 
 public class Manager {
     private DirOps dirOps;
-    
+
     /**
      * Creates a new directory at the specified path.
      *
      * @param path the path where the new directory should be created
-     * @return 0 if the directory creation was successful
-     *        -1 if the directory already exists,
-     *        -2 if the path is invalid
+     * @return DirectoryCreationStatus indicating the result of the operation.
      */
-    public int newDirectory(String path) {
+    public DirectoryCreationStatus newDirectory(String path) {
         if (dirOps.checkDirectoryExists(path)) {
-            return -1;
+            return DirectoryCreationStatus.ALREADY_EXISTS;
         } else if (!dirOps.checkPathValid(path)) {
-            return -2;
+            return DirectoryCreationStatus.INVALID_PATH;
         } else {
             dirOps.createDirectory(path);
-            return 0;
+            return DirectoryCreationStatus.SUCCESS;
         }
     }
 }
